@@ -4,7 +4,7 @@ import {
     postAudio, 
     //getAudio, 
     //patchAudio, 
-    //deleteAudio, 
+    deleteAudio, 
 } from "../controllers/audio.controllers.js";
 
 
@@ -18,6 +18,6 @@ router.post('/audio', postAudio);
 
 //router.patch('/audio/:id', patchAudio);
 
-//router.delete('/audio', deleteAudio);
+router.delete('/audio/:youtube_id', deleteAudio);
 
 export default router;

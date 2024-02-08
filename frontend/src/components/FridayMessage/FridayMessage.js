@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import YouTube from 'react-youtube';
 import { CountdownBox, CountdownContainer, CenteredContainer, SorryMessage, Button, Container } from './FridayMessageStyled';
 
@@ -6,6 +7,8 @@ const FridayMessage = () => {
   const [timeLeft, setTimeLeft] = useState('');
   const [isFriday, setIsFriday] = useState(false);
   const [itFeelsLikeIsFriday, setItFeelsLikeIsFriday] = useState(false);
+  const [videos, setVideos] = useState([]);
+  const [selectedVideoIndex, setSelectedVideoIndex] = useState("XMpYGx8xBl0");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -29,8 +32,26 @@ const FridayMessage = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    axios.get('http://localhost:3010/api/audio')
+      .then(response => {
+        const videosData = response.data;
+        const youtubeIds = videosData.map(video => video.youtube_id);
+        setVideos(youtubeIds);
+        const randomIndex = Math.floor(Math.random() * youtubeIds.length);
+        setSelectedVideoIndex(randomIndex);
+      })
+      .catch(error => {
+        console.error('Error obteniendo los videos:', error);
+      });
+  }, []);
+
   const handleClick = () => {
     setItFeelsLikeIsFriday(true);
+  };
+
+  const handleMoreFridayClick = () => {
+    setSelectedVideoIndex(Math.floor(Math.random() * videos.length));
   };
 
   const onReady = (event) => {
@@ -55,18 +76,19 @@ const FridayMessage = () => {
         {(isFriday || itFeelsLikeIsFriday) && (
           <Container>
             <YouTube
-              videoId="XMpYGx8xBl0"
+              videoId={videos[selectedVideoIndex]}
               opts={{ playerVars: { autoplay: 1 } }}
               onReady={onReady}
               onStateChange={onStateChange}
             />
+            <Button onClick={handleMoreFridayClick}>Más Viernes!</Button>
           </Container>
         )}
-        {!isFriday && (
+        {(!isFriday && !itFeelsLikeIsFriday) ? (
           <Container>
             <Button onClick={handleClick}>Hoy se siente como un viernes</Button>
           </Container>
-        )}
+        ) : (<> </>) }
       </CountdownContainer>
     </CenteredContainer>
   );

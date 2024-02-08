@@ -74,12 +74,12 @@ export const patchAudio = async (req, res) => {
     }
 };
 
-
+*/
 export const deleteAudio = async (req, res) => {
     try {
-        const [result] = await pool.query('DELETE FROM audio WHERE id = ?', [req.params.id]) ;
+        const [result] = await pool.query('DELETE FROM audio WHERE youtube_id = ?', [req.params.youtube_id]) ;
         if(result.affectedRows <= 0) return res.status(404).json({
-            message: 'Sinister not found.'
+            message: 'Audio not found. audio'
         });
     
         res.sendStatus(204);
@@ -90,4 +90,3 @@ export const deleteAudio = async (req, res) => {
     }
 };
 
-*/

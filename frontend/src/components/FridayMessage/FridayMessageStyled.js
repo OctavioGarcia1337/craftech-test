@@ -37,6 +37,7 @@ export const Button = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  margin-top: 15px;
   
   &:hover {
     transform: scale(1.1);
@@ -44,5 +45,5 @@ export const Button = styled.button`
 `;
 
 export const Container = styled.div`
-  padding: 10px 10px;
+  padding: 20px;
 `;
