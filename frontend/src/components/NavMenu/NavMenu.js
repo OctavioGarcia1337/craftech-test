@@ -5,6 +5,7 @@ import axios from 'axios';
 const NavMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [youtubeLink, setYoutubeLink] = useState('');
+  const [buttonColor, setButtonColor] = useState('default'); // Estado para controlar el color del botón
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
 
@@ -24,9 +25,15 @@ const NavMenu = () => {
         youtube_id: youtubeId
       });
       console.log('Audio añadido correctamente.', youtubeId);
+      setButtonColor('success');
+      setYoutubeLink('');
     } catch (error) {
       console.error('Error al añadir audio:', error);
+      setButtonColor('error');
     }
+    setTimeout(() => {
+      setButtonColor('default');
+    }, 2000);
   };
 
   const extractYoutubeId = (url) => {
@@ -54,12 +61,12 @@ const NavMenu = () => {
 
   return (
     <>
-    <Container>
-      <div></div>
-      <StyledTitle>EL AUDIO DE LOS VIERNES!</StyledTitle>
-      <Button ref={buttonRef} onClick={handleMenuToggle}>
-        <Icon />
-      </Button>
+      <Container>
+        <div></div>
+        <StyledTitle>EL AUDIO DE LOS VIERNES!</StyledTitle>
+        <Button ref={buttonRef} onClick={handleMenuToggle}>
+          <Icon />
+        </Button>
       </Container>
       {showMenu && (
         <MenuContainer ref={menuRef}>
@@ -67,7 +74,7 @@ const NavMenu = () => {
             <p>Desea añadir un nuevo audio de los viernes?</p>
             <Label>Introduzca el link del video de YouTube con el audio:</Label>
             <Input type="text" value={youtubeLink} onChange={handleInputChange} />
-            <SubmitButton type="submit">Añadir</SubmitButton>
+            <SubmitButton type="submit" color={buttonColor}>Añadir</SubmitButton>
           </Form>
         </MenuContainer>
       )}

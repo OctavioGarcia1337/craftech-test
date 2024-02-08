@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  text-align: center; /* Centrar el texto */
+  text-align: center;
   padding: 10px;
 `;
 
@@ -29,7 +29,16 @@ export const ExitIcon = styled(BiExit)`
 `;
 
 export const Button = styled.button`
-  background-color: hotpink;
+  background-color: ${({ color }) => {
+    switch (color) {
+      case 'success':
+        return 'green';
+      case 'error':
+        return 'red';
+      default:
+        return 'hotpink';
+    }
+  }};
   color: white;
   border: 5px solid white;
   border-radius: 20px;
@@ -40,23 +49,23 @@ export const Button = styled.button`
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 `;
 
 export const MenuContainer = styled.div`
   position: absolute;
-  top: 110px; /* Ajustado a 53px como se pidió */
+  top: 110px;
   right: 10px;
-  background-color: hotpink; /* Color de fondo hotpink */
+  background-color: hotpink;
   color: white; 
-  border: 5px solid white; /* Borde igual que los botones */
+  border: 5px solid white;
   border-radius: 20px;
   padding: 20px;
   z-index: 100;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Misma sombra que los botones */
-  font-family: "Montserrat", sans-serif; /* Font-family Montserrat */
-  font-weight: 700; /* Weight 700 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+  font-family: "Montserrat", sans-serif; 
+  font-weight: 700; 
 `;
 
 export const Form = styled.form`
@@ -71,8 +80,10 @@ export const Label = styled.label`
 export const Input = styled.input`
   margin-bottom: 10px;
   padding: 5px;
+  border-radius: 10px;
+  border-color: white;
 `;
 
 export const SubmitButton = styled(Button)`
-  margin-top: 10px; /* Espacio entre el formulario y el botón */
+  margin-top: 10px;
 `;

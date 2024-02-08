@@ -10,4 +10,9 @@ CREATE TABLE audio (
 
 INSERT INTO audio (youtube_id)
 VALUES 
-("XMpYGx8xBl0", "IquqMSnTowM", "LKI920-7pTI", "1TewCPi92ro", "PPzIWFJU_3s");
+("XMpYGx8xBl0"), 
+("IquqMSnTowM"), 
+("LKI920-7pTI"), 
+("1TewCPi92ro"), 
+("PPzIWFJU_3s"), 
+("Vi5OQ4L-W4k");
