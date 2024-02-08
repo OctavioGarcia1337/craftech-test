@@ -21,7 +21,7 @@ const NavMenu = () => {
     event.preventDefault();
     const youtubeId = extractYoutubeId(youtubeLink);
     try {
-      await axios.post('http://localhost:3010/api/audio', {
+      await axios.post('https://ingsw3-integrador-backend.vercel.app', {
         youtube_id: youtubeId
       });
       console.log('Audio añadido correctamente.', youtubeId);

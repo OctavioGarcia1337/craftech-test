@@ -34,7 +34,7 @@ const FridayMessage = () => {
   }, []);
 
   useEffect(() => {
-    axios.get('http://localhost:3010/api/audio')
+    axios.get('https://ingsw3-integrador-backend.vercel.app/api/audio')
       .then(response => {
         const videosData = response.data;
         const youtubeIds = videosData.map(video => video.youtube_id);
@@ -58,10 +58,10 @@ const FridayMessage = () => {
   const handleErrorClick = () => {
     if (error) {
       const youtubeIdToDelete = videos[selectedVideoIndex];
-      axios.delete(`http://localhost:3010/api/audio/${youtubeIdToDelete}`)
+      axios.delete(`https://ingsw3-integrador-backend.vercel.app/api/audio/${youtubeIdToDelete}`)
         .then(response => {
           console.log('Video eliminado correctamente:', youtubeIdToDelete);
-          axios.get('http://localhost:3010/api/audio')
+          axios.get('https://ingsw3-integrador-backend.vercel.app/api/audio')
             .then(response => {
               const videosData = response.data;
               const youtubeIds = videosData.map(video => video.youtube_id);
