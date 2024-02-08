@@ -5,7 +5,7 @@ import axios from 'axios';
 const NavMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [youtubeLink, setYoutubeLink] = useState('');
-  const [buttonColor, setButtonColor] = useState('default'); // Estado para controlar el color del botón
+  const [buttonColor, setButtonColor] = useState('default');
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
 
