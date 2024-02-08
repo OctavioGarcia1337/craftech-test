@@ -12,7 +12,16 @@ INSERT INTO audio (youtube_id)
 VALUES 
 ("XMpYGx8xBl0"), 
 ("IquqMSnTowM"), 
-("LKI920-7pTI"), 
+("ObfD9Xil5dE"), 
 ("1TewCPi92ro"), 
 ("PPzIWFJU_3s"), 
 ("Vi5OQ4L-W4k");
+
+INSERT INTO audio (youtube_id)
+VALUES 
+("ERROR-00001"),
+("ERROR-00002"),
+("ERROR-00003"),
+("ERROR-00004"),
+("ERROR-00005"),
+("ERROR-00006");

@@ -9,6 +9,7 @@ const FridayMessage = () => {
   const [itFeelsLikeIsFriday, setItFeelsLikeIsFriday] = useState(false);
   const [videos, setVideos] = useState([]);
   const [selectedVideoIndex, setSelectedVideoIndex] = useState("XMpYGx8xBl0");
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -54,6 +55,32 @@ const FridayMessage = () => {
     setSelectedVideoIndex(Math.floor(Math.random() * videos.length));
   };
 
+  const handleErrorClick = () => {
+    if (error) {
+      const youtubeIdToDelete = videos[selectedVideoIndex];
+      axios.delete(`http://localhost:3010/api/audio/${youtubeIdToDelete}`)
+        .then(response => {
+          console.log('Video eliminado correctamente:', youtubeIdToDelete);
+          axios.get('http://localhost:3010/api/audio')
+            .then(response => {
+              const videosData = response.data;
+              const youtubeIds = videosData.map(video => video.youtube_id);
+              setVideos(youtubeIds);
+              const randomIndex = Math.floor(Math.random() * youtubeIds.length);
+              setSelectedVideoIndex(randomIndex);
+            })
+            .catch(error => {
+              console.error('Error obteniendo los videos:', error);
+            });
+          setError(false);
+        })
+        .catch(error => {
+          console.error('Error al eliminar el video:', error);
+        });
+    }
+    setError(false);
+  };
+
   const onReady = (event) => {
     if (isFriday || itFeelsLikeIsFriday) {
       event.target.playVideo();
@@ -61,6 +88,13 @@ const FridayMessage = () => {
   };
 
   const onStateChange = (event) => {
+    const videoData = event.target.getVideoData();
+    if (!videoData.title) {
+      setError(true);
+    } else {
+      setError(false);
+    }
+
     if (event.data === 1) {
       document.getElementById('message').innerText = 'Vamos que hoy es VIERNES!!!';
     } else {
@@ -81,7 +115,16 @@ const FridayMessage = () => {
               onReady={onReady}
               onStateChange={onStateChange}
             />
-            <Button onClick={handleMoreFridayClick}>Más Viernes!</Button>
+            
+            {error ? (
+              <>
+              <Button onClick={handleErrorClick}>Hemos tenido un problema, quiere reiniciar su viernes?</Button>
+              </>
+            ) : (
+              <>
+              <Button onClick={handleMoreFridayClick}>Más Viernes!</Button>
+              </>
+            )}
           </Container>
         )}
         {(!isFriday && !itFeelsLikeIsFriday) ? (
