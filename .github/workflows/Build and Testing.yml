@@ -20,5 +20,6 @@ jobs:
 
       - name: Correr Tests
         run: |
+          chmod +x ./node_modules/.bin/_mocha
           npm run test
         working-directory: ./backend
