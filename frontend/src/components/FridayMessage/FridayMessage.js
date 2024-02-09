@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import YouTube from 'react-youtube';
 import { CountdownBox, CountdownContainer, CenteredContainer, SorryMessage, Button, Container } from './FridayMessageStyled';
+import { DB_HOST } from '../../config';
 
 const FridayMessage = () => {
   const [timeLeft, setTimeLeft] = useState('');
@@ -34,7 +35,7 @@ const FridayMessage = () => {
   }, []);
 
   useEffect(() => {
-    axios.get('https://ingsw3-integrador-backend.vercel.app/api/audio')
+    axios.get( DB_HOST + '/api/audio')
       .then(response => {
         const videosData = response.data;
         const youtubeIds = videosData.map(video => video.youtube_id);
@@ -58,10 +59,10 @@ const FridayMessage = () => {
   const handleErrorClick = () => {
     if (error) {
       const youtubeIdToDelete = videos[selectedVideoIndex];
-      axios.delete(`https://ingsw3-integrador-backend.vercel.app/api/audio/${youtubeIdToDelete}`)
+      axios.delete( DB_HOST + `/api/audio/${youtubeIdToDelete}`)
         .then(response => {
           console.log('Video eliminado correctamente:', youtubeIdToDelete);
-          axios.get('https://ingsw3-integrador-backend.vercel.app/api/audio')
+          axios.get( DB_HOST + '/api/audio')
             .then(response => {
               const videosData = response.data;
               const youtubeIds = videosData.map(video => video.youtube_id);

@@ -1,5 +1,4 @@
-import { config } from "dotenv";
 
-config();
+export const DB_HOST = "http://localhost:3010";
 
-export const REACT_APP_DB_DOMAIN = process.env.REACT_APP_DB_DOMAIN || "http://localhost:3010";
+//export const DB_HOST = "http://localhost:3010";

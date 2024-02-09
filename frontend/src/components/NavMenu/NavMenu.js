@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button, Icon, MenuContainer, Form, Label, Input, SubmitButton, StyledTitle, Container  } from './NavMenuStyled.js';
 import axios from 'axios';
+import { DB_HOST } from '../../config.js';
 
 const NavMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -21,7 +22,7 @@ const NavMenu = () => {
     event.preventDefault();
     const youtubeId = extractYoutubeId(youtubeLink);
     try {
-      await axios.post('https://ingsw3-integrador-backend.vercel.app', {
+      await axios.post( DB_HOST + '/api/audio', {
         youtube_id: youtubeId
       });
       console.log('Audio añadido correctamente.', youtubeId);
