@@ -18,8 +18,19 @@ jobs:
            docker compose up -d
            sleep 30
 
-      - name: Correr Tests
+      - name: Run Tests
         run: |
           chmod +x ./node_modules/.bin/mocha
           npx mocha tests.js
         working-directory: ./backend
+
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+      
+      - name: Tag and push Docker images
+        run: |
+          docker tag ingsw3-integrador-backend:latest ${{ secrets.DOCKERHUB_USERNAME }}/ingsw3-integrador-backend:latest
+          docker tag mysql ${{ secrets.DOCKERHUB_USERNAME }}/mysql
+
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ingsw3-integrador-backend:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/mysql
