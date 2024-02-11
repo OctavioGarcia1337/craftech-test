@@ -43,6 +43,6 @@ describe('Backend API Tests', () => {
             },
         });
 
-        assert.equal(deleteResponse.status, 204);
+        assert.equal(deleteResponse.status, 200); //provoco fallo para testear workflow
     });
 });
