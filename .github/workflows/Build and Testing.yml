@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: |
           npx playwright install --force
-          npm install
+          npm install --force
         working-directory: ./frontend
   
       - name: Run e2e tests
