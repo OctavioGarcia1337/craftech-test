@@ -12,6 +12,10 @@ app.use(cors());
 app.use(indexRoutes);
 app.use('/api',audioRoutes);
 
+app.get("/", async (req, res) => {
+    res.json({ status: "Backend Funcionando" });
+    });
+
 app.use((req, res, next) => {
     res.status(404).json({
         message: 'Endpoint not found',
