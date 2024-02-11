@@ -24,15 +24,6 @@ jobs:
           npx mocha tests.js
         working-directory: ./backend
 
-      - name: Check test status
-        run: |
-          if [[ $? -ne 0 ]]; then
-            echo "Tests failed"
-            exit 1
-          else
-            echo "Tests passed"
-          fi
-
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
       
