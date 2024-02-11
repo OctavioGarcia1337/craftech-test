@@ -1,0 +1,215 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-02-11T07:30:53.308Z",
+    "end": "2024-02-11T07:31:09.267Z",
+    "duration": 15959,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6b8babf1-f6eb-4aae-8977-73c2f45b3cd5",
+      "title": "",
+      "fullFile": "H:\\GitHub\\ingsw3-integrador\\frontend\\visuals_test.js",
+      "file": "\\visuals_test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "06a16294-12f8-4ebe-be16-d03c7948fd8e",
+          "title": "Prueba",
+          "fullFile": "H:\\GitHub\\ingsw3-integrador\\frontend\\visuals_test.js",
+          "file": "\\visuals_test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook: codeceptjs.beforeSuite in \"Prueba\"",
+              "fullTitle": "Prueba \"before all\" hook: codeceptjs.beforeSuite in \"Prueba\"",
+              "timedOut": false,
+              "duration": 549,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "scenario.suiteSetup(suite)",
+              "err": {},
+              "uuid": "d89e2da2-501a-4599-b135-5d3d6a4f12da",
+              "parentUUID": "06a16294-12f8-4ebe-be16-d03c7948fd8e",
+              "isHook": true,
+              "skipped": false
+            },
+            {
+              "title": "\"before each\" hook: codeceptjs.before in \"Prueba\"",
+              "fullTitle": "Prueba \"before each\" hook: codeceptjs.before in \"Prueba\"",
+              "timedOut": false,
+              "duration": 266,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "scenario.setup(suite)",
+              "err": {},
+              "uuid": "b00e42d9-0585-4782-bded-32969fa0cc58",
+              "parentUUID": "06a16294-12f8-4ebe-be16-d03c7948fd8e",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook: codeceptjs.afterSuite in \"Prueba\"",
+              "fullTitle": "Prueba \"after all\" hook: codeceptjs.afterSuite in \"Prueba\"",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "scenario.suiteTeardown(suite)",
+              "err": {},
+              "uuid": "406b131f-0746-4ac1-9787-c286d00e146d",
+              "parentUUID": "06a16294-12f8-4ebe-be16-d03c7948fd8e",
+              "isHook": true,
+              "skipped": false
+            },
+            {
+              "title": "\"after each\" hook: finalize codeceptjs in \"Prueba\"",
+              "fullTitle": "Prueba \"after each\" hook: finalize codeceptjs in \"Prueba\"",
+              "timedOut": false,
+              "duration": 57,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "scenario.teardown(suite)",
+              "err": {},
+              "uuid": "f89dee00-cb97-4491-b0d2-22043439b578",
+              "parentUUID": "06a16294-12f8-4ebe-be16-d03c7948fd8e",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Testing Some Text",
+              "fullTitle": "Prueba: Testing Some Text",
+              "timedOut": false,
+              "duration": 5979,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "I }) => {\n    I.amOnPage('http://localhost:3000');\n    I.wait(5);\n    I.see('EL AUDIO DE LOS VIERNES!')\n    I.see('Octavio Garcia 2004033 - UCC - Integrador Ing. Software III - 2024')",
+              "err": {},
+              "uuid": "cbac1e73-7314-4cde-a3e2-2cab0065638d",
+              "parentUUID": "06a16294-12f8-4ebe-be16-d03c7948fd8e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Testing Upload - Success",
+              "fullTitle": "Prueba: Testing Upload - Success",
+              "timedOut": false,
+              "duration": 4185,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "I }) => {\n    I.amOnPage('http://localhost:3000');\n    I.click('button.sc-kFCroH');\n    I.waitForVisible('div.sc-guDLey.dwEfBc', 5);\n    \n    I.see('Desea añadir un nuevo audio de los viernes?');\n    const enlaceYouTube = 'https://www.youtube.com/shorts/x2vguwCs2nQ';\n    I.fillField('input.sc-brSamD.bAiYgC', enlaceYouTube);\n    I.wait(1);\n    const colorAntes = await I.grabAttributeFrom('button.sc-kFCroH.sc-ktwOfi.kDXnIh.lcJajR', 'color');\n    I.click('button.sc-kFCroH.sc-ktwOfi.kDXnIh.lcJajR');\n    I.wait(1);\n    const colorDespues = await I.grabAttributeFrom('button.sc-kFCroH.sc-ktwOfi.hOikIJ.lcJajR', 'color');\n    if (colorAntes === 'default' && colorDespues === 'success') {\n        console.log('El audio se añadio de manera exitosa.');\n    } else {\n        assert.fail(`Ocurrio un error inesperado`);\n        //assert.fail(`Ocurrio un error añadiendo el audio. Antes:${colorAntes} ---- Desp:${colorDespues}`);\n    }",
+              "err": {},
+              "uuid": "e33a3661-a330-447b-86de-dce981809897",
+              "parentUUID": "06a16294-12f8-4ebe-be16-d03c7948fd8e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Testing Upload - Error",
+              "fullTitle": "Prueba: Testing Upload - Error",
+              "timedOut": false,
+              "duration": 4177,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "I }) => {\n    I.amOnPage('http://localhost:3000');\n    I.click('button.sc-kFCroH');\n    I.waitForVisible('div.sc-guDLey.dwEfBc', 5);\n    \n    I.see('Desea añadir un nuevo audio de los viernes?');\n    const enlaceYouTube = 'https://www.youtube.com/shorts/TEST-ERROR';\n    I.fillField('input.sc-brSamD.bAiYgC', enlaceYouTube);\n    I.wait(1);\n    const colorAntes = await I.grabAttributeFrom('button.sc-kFCroH.sc-ktwOfi.kDXnIh.lcJajR', 'color');\n    I.click('button.sc-kFCroH.sc-ktwOfi.kDXnIh.lcJajR');\n    I.wait(1);\n    const colorDespues = await I.grabAttributeFrom('button.sc-kFCroH.sc-ktwOfi.QRzSJ.lcJajR', 'color');\n    if (colorAntes === 'default' && colorDespues === 'error') {\n        console.log('El audio no se añadio de manera exitosa.');\n    } else {\n        assert.fail(`Ocurrio un error inesperado`);\n        //assert.fail(`Ocurrio un error y se pudo añadir el audio. Antes:${colorAntes} ---- Desp:${colorDespues}`);\n    }",
+              "err": {},
+              "uuid": "3968cec2-7e7f-4f1f-9229-c1fcb7b95c0b",
+              "parentUUID": "06a16294-12f8-4ebe-be16-d03c7948fd8e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "cbac1e73-7314-4cde-a3e2-2cab0065638d",
+            "e33a3661-a330-447b-86de-dce981809897",
+            "3968cec2-7e7f-4f1f-9229-c1fcb7b95c0b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 14341,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 0
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 0
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome-report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "./output",
+        "reportFilename": "mochawesome-report"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

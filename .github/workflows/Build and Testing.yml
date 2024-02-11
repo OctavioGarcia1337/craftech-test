@@ -23,6 +23,12 @@ jobs:
           chmod +x ./node_modules/.bin/mocha
           npx mocha tests.js
         working-directory: ./backend
+      
+      - name: Run frontend
+        run: |
+          npm install
+          nohup npm start &
+        working-directory: ./frontend
 
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -30,7 +36,11 @@ jobs:
       - name: Tag and push Docker images
         run: |
           docker tag ingsw3-integrador-backend:latest ${{ secrets.DOCKERHUB_USERNAME }}/ingsw3-integrador-backend:latest
+          docker tag ingsw3-integrador-frontend:latest ${{ secrets.DOCKERHUB_USERNAME }}/ingsw3-integrador-frontend:latest
           docker tag mysql ${{ secrets.DOCKERHUB_USERNAME }}/mysql
 
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/ingsw3-integrador-backend:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ingsw3-integrador-frontend:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/mysql
+
+          
