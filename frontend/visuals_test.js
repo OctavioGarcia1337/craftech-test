@@ -4,13 +4,15 @@ const assert = require('assert');
 
 
 Scenario('Testing Some Text', ({ I }) => {
-    I.amOnPage('http://localhost:3000');
+    I.wait(10);
+    I.amOnPage('https://gc-ingsw3-integrador-frontend-yvui5th4na-uc.a.run.app');
     I.wait(5);
     I.see('EL AUDIO DE LOS VIERNES!')
     I.see('Octavio Garcia 2004033 - UCC - Integrador Ing. Software III - 2024')
 });
 
 Scenario('Testing Upload - Success', async ({ I }) => {
+    I.wait(10);
     I.amOnPage('https://gc-ingsw3-integrador-frontend-yvui5th4na-uc.a.run.app');
     I.click('button.sc-kFCroH');
 
