@@ -2,10 +2,13 @@ Feature('Prueba')
 
 const assert = require('assert');
 
+const URL = 'http://localhost:3000';
+//const URL = 'https://gc-ingsw3-integrador-frontend-yvui5th4na-uc.a.run.app'
+
 
 Scenario('Testing Some Text', ({ I }) => {
     I.wait(10);
-    I.amOnPage('https://gc-ingsw3-integrador-frontend-yvui5th4na-uc.a.run.app');
+    I.amOnPage(URL);
     I.wait(5);
     I.see('EL AUDIO DE LOS VIERNES!')
     I.see('Octavio Garcia 2004033 - UCC - Integrador Ing. Software III - 2024')
@@ -13,7 +16,7 @@ Scenario('Testing Some Text', ({ I }) => {
 
 Scenario('Testing Upload - Success', async ({ I }) => {
     I.wait(10);
-    I.amOnPage('https://gc-ingsw3-integrador-frontend-yvui5th4na-uc.a.run.app');
+    I.amOnPage(URL);
     I.click('button.sc-kFCroH');
 
     I.waitForVisible('div.sc-guDLey.dwEfBc', 5);

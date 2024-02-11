@@ -22,7 +22,7 @@ const NavMenu = () => {
     event.preventDefault();
     const youtubeId = extractYoutubeId(youtubeLink);
     try {
-      await axios.post( DB_HOST + '/api/audio', {
+      await axios.post( DB_HOST, {
         youtube_id: youtubeId
       });
       console.log('Audio añadido correctamente.', youtubeId);

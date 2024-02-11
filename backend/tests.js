@@ -3,8 +3,8 @@ import fetch from 'node-fetch';
 
 describe('Backend API Tests', () => {
     
-    it('Testing Database connection', async () => {
-        const response = await fetch('http://localhost:8080/ping');
+    it('Testing Backend is up', async () => {
+        const response = await fetch('http://localhost:8080/');
         const data = await response.json();
 
         assert.equal(response.status, 200);

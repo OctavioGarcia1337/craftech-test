@@ -35,7 +35,7 @@ const FridayMessage = () => {
   }, []);
 
   useEffect(() => {
-    axios.get( DB_HOST + '/api/audio')
+    axios.get( DB_HOST )
       .then(response => {
         const videosData = response.data;
         const youtubeIds = videosData.map(video => video.youtube_id);
