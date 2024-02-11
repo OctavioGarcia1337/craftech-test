@@ -11,7 +11,7 @@ Scenario('Testing Some Text', ({ I }) => {
 });
 
 Scenario('Testing Upload - Success', async ({ I }) => {
-    I.amOnPage('http://localhost:3000');
+    I.amOnPage('https://gc-ingsw3-integrador-frontend-yvui5th4na-uc.a.run.app');
     I.click('button.sc-kFCroH');
 
     I.waitForVisible('div.sc-guDLey.dwEfBc', 5);
@@ -42,7 +42,7 @@ Scenario('Testing Upload - Success', async ({ I }) => {
 
 
 Scenario('Testing Upload - Error', async ({ I }) => {
-    I.amOnPage('http://localhost:3000');
+    I.amOnPage('https://gc-ingsw3-integrador-frontend-yvui5th4na-uc.a.run.app');
     I.click('button.sc-kFCroH');
 
     I.waitForVisible('div.sc-guDLey.dwEfBc', 5);
