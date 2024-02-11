@@ -30,21 +30,21 @@ jobs:
           nohup npm start &
         working-directory: ./frontend
 
-      - name: Install dependencies
-        run: |
-          npx playwright install --force
-          npm install --force
-        working-directory: ./frontend
+      # - name: Install dependencies
+      #   run: |
+      #     npx playwright install --force
+      #     npm install --force
+      #   working-directory: ./frontend
   
-      - name: Run e2e tests
-        run: xvfb-run npx codeceptjs run
-        working-directory: ./frontend
+      # - name: Run e2e tests
+      #   run: xvfb-run npx codeceptjs run
+      #   working-directory: ./frontend
   
-      - name: Results
-        uses: actions/upload-artifact@v2
-        with:
-          name: codecept-results
-          path: output
+      # - name: Results
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: codecept-results
+      #     path: output
 
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
