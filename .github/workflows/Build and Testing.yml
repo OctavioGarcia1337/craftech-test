@@ -32,7 +32,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npx playwright install
+          npx playwright install --force
           npm install
         working-directory: ./frontend
   
