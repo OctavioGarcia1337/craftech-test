@@ -23,12 +23,15 @@ jobs:
       run: |
         npx playwright install
         npm install
+      working-directory: ./frontend
 
-    - name: Correr tests
+    - name: Run test
       run: xvfb-run npx codeceptjs run
+      working-directory: ./frontend
 
-    - name: resultados
+    - name: Results
       uses: actions/upload-artifact@v2
       with:
         name: codecept-results
         path: output
+    
