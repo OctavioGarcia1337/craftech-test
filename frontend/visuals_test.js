@@ -10,9 +10,7 @@ Scenario('Testing Some Text', ({ I }) => {
     I.wait(15);
     I.amOnPage(URL);
     I.wait(5);
-    if(I.see('EL AUDIO DE LOS VIERNES!')){console.log('Encontre el Footer.');}
-    if(I.see('Octavio Garcia 2004033 - UCC - Ingeniería en Software III - 2024')){console.log('Encontre el Footer.');}
-    
+    I.see('EL AUDIO DE LOS VIERNES!')
 });
 
 Scenario('Testing Upload - Success', async ({ I }) => {
