@@ -13,7 +13,7 @@ exports.config = {
   helpers: {
     Playwright: {
       browser: 'chromium',
-      url: 'http://localhost:3000',
+      url: 'https://gc-ingsw3-integrador-frontend-g5wdfg2tqq-uc.a.run.app',
       show: false
     }
   },
