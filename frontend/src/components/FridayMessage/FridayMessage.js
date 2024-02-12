@@ -59,7 +59,7 @@ const FridayMessage = () => {
   const handleErrorClick = () => {
     if (error) {
       const youtubeIdToDelete = videos[selectedVideoIndex];
-      axios.delete( DB_HOST + `/api/audio/${youtubeIdToDelete}`)
+      axios.delete( DB_HOST + `/${youtubeIdToDelete}`)
         .then(response => {
           console.log('Video eliminado correctamente:', youtubeIdToDelete);
           axios.get( DB_HOST + '/api/audio')
