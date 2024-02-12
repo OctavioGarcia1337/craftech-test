@@ -2,7 +2,7 @@ name: Tests de Integracion
 
 on:
   workflow_run:
-    workflows: ["Build and Deploy - DONT RUN"]
+    workflows: ["Build and Deploy"]
     types:
       - completed
 
