@@ -36,7 +36,6 @@ Scenario('Testing Upload - Error', async ({ I }) => {
 });
 
 Scenario('Testing Upload - Success', async ({ I }) => {
-    I.wait(10);
     I.amOnPage(URL);
     I.click('button.sc-kFCroH');
 
