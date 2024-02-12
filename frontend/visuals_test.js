@@ -11,7 +11,7 @@ Scenario('Testing Some Text', ({ I }) => {
     I.amOnPage(URL);
     I.wait(5);
     I.see('EL AUDIO DE LOS VIERNES!')
-    I.see('Octavio Garcia 2004033 - UCC - Integrador Ing. Software III - 2024')
+    I.see('Octavio Garcia 2004033 - UCC - Ingeniería en Software III - 2024')
 });
 
 Scenario('Testing Upload - Success', async ({ I }) => {
