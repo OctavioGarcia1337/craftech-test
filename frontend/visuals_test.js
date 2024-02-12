@@ -7,7 +7,6 @@ const URL = 'https://gc-ingsw3-integrador-frontend-g5wdfg2tqq-uc.a.run.app'
 
 
 Scenario('Testing Some Text', async ({ I }) => {
-    I.wait(15);
     I.amOnPage(URL);
     I.wait(5);
     I.see('EL AUDIO DE LOS VIERNES!')
