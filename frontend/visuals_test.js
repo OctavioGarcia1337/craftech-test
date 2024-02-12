@@ -5,6 +5,18 @@ const assert = require('assert');
 //const URL = 'http://localhost:3000';
 const URL = 'https://gc-ingsw3-integrador-frontend-g5wdfg2tqq-uc.a.run.app'
 
+Scenario('Preparar Tests', async ({ I }) => {
+    I.amOnPage(URL);
+    I.wait(3);
+    const numberOfElements = await I.grabNumberOfVisibleElements('button.sc-kFCroH');
+    if (numberOfElements > 0) {
+        I.click('button.sc-kFCroH');
+        console.log('Botón encontrado. Continuando normalmente...');
+    } else {
+        console.log('Botón no encontrado. Continuando normalmente...');
+    }
+});
+
 
 Scenario('Testing Upload - Error', async ({ I }) => {
     I.amOnPage(URL);
