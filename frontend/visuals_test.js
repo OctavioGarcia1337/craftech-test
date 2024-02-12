@@ -7,11 +7,12 @@ const URL = 'https://gc-ingsw3-integrador-frontend-g5wdfg2tqq-uc.a.run.app'
 
 
 Scenario('Testing Some Text', ({ I }) => {
-    I.wait(10);
+    I.wait(15);
     I.amOnPage(URL);
     I.wait(5);
-    I.see('EL AUDIO DE LOS VIERNES!')
-    I.see('Octavio Garcia 2004033 - UCC - Ingeniería en Software III - 2024')
+    if(I.see('EL AUDIO DE LOS VIERNES!')){console.log('Encontre el Footer.');}
+    if(I.see('Octavio Garcia 2004033 - UCC - Ingeniería en Software III - 2024')){console.log('Encontre el Footer.');}
+    
 });
 
 Scenario('Testing Upload - Success', async ({ I }) => {
@@ -36,7 +37,7 @@ Scenario('Testing Upload - Success', async ({ I }) => {
     const colorDespues = await I.grabAttributeFrom('button.sc-kFCroH.sc-ktwOfi.hOikIJ.lcJajR', 'color');
 
     if (colorAntes === 'default' && colorDespues === 'success') {
-        console.log('El audio se añadio de manera exitosa.');
+        console.log('El audio se añadio de manera exitosa. Lo cual es correcto para la prueba');
     } else {
         assert.fail(`Ocurrio un error inesperado`);
         //assert.fail(`Ocurrio un error añadiendo el audio. Antes:${colorAntes} ---- Desp:${colorDespues}`);
@@ -67,7 +68,7 @@ Scenario('Testing Upload - Error', async ({ I }) => {
     const colorDespues = await I.grabAttributeFrom('button.sc-kFCroH.sc-ktwOfi.QRzSJ.lcJajR', 'color');
 
     if (colorAntes === 'default' && colorDespues === 'error') {
-        console.log('El audio no se añadio de manera exitosa.');
+        console.log('El audio no se añadio de manera exitosa. Lo cual es correcto para la prueba');
     } else {
         assert.fail(`Ocurrio un error inesperado`);
         //assert.fail(`Ocurrio un error y se pudo añadir el audio. Antes:${colorAntes} ---- Desp:${colorDespues}`);
