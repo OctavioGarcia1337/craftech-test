@@ -6,19 +6,39 @@ on:
     types:
       - completed
 
+env:
+
+  PROJECT_ID: ${{ secrets.GOOGLECLOUD_PROJECT }}
+  REGION: us-central1
+  # project-name but it can be anything you want
+  REPO_NAME: nextjs-cloud-run
+
 jobs:
-  build-and-publish:
+  build-and-deploy:
+    name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Build y push imagenes a DockerHub
+      # Authenticate with Google Cloud
+      - id: "auth"
+        uses: "google-github-actions/auth@v0"
+        with:
+          credentials_json: "${{ secrets.GOOGLECLOUD_KEY }}"
+
+      # Setup gcloud CLI/SDK
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0
+
+      - name: Authorize Docker push
+        run: gcloud auth configure-docker
+
+      - name: Build and tag the docker image
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-        run: |
+        run: |-
           docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
           cd backend
           docker build -t $DOCKERHUB_USERNAME/ingsw3-integrador-backend:latest .
@@ -30,25 +50,23 @@ jobs:
           docker build -t $DOCKERHUB_USERNAME/mysql:latest .
           docker push $DOCKERHUB_USERNAME/mysql:latest
 
-      - name: Configurar auth Google Cloud CLI
-        uses: google-github-actions/setup-gcloud@v0.4.0
-        with:
-          service_account_key: ${{ secrets.GOOGLECLOUD_KEY }}
-          project_id: viernes-2004033
+      - name: Push the image to the Google Container Registry (GCR)
+        run: |-
+          docker push gcr.io/$PROJECT_ID/gc-ingsw3-integrador-frontend:latest
+          docker push gcr.io/$PROJECT_ID/gc-ingsw3-integrador-backend:latest
 
       - name: Deploy Frontend
-        run: |
+        run: |-
           gcloud run deploy gc-ingsw3-integrador-frontend \
-            --image=docker.io/octaviogarcia/ingsw3-integrador-frontend:latest \
-            --platform=managed \
-            --region=southamerica-east1 \
-            --allow-unauthenticated
-
+          --region $REGION \
+          --image gcr.io/$PROJECT_ID/gc-ingsw3-integrador-frontend:latest \
+          --platform "managed" \
+          --quiet
+      
       - name: Deploy Backend
-        run: |
+        run: |-
           gcloud run deploy gc-ingsw3-integrador-backend \
-            --image=docker.io/octaviogarcia/ingsw3-integrador-backend:latest \
-            --update-env-vars INSTANCE_CONNECTION_NAME=viernes-2004033:us-central1:prueba,DB_HOST=bavblrjndfh1pissg40y-mysql.services.clever-cloud.com,DB_PORT=3306,DB_USER=uxdybzscsblyftbr,DB_PASSWORD=M56ZoQ0eXHcarlvOQ7B2,DB_DATABASE=bavblrjndfh1pissg40y \
-            --platform=managed \
-            --region=southamerica-east1 \
-            --allow-unauthenticated
+          --region $REGION \
+          --image gcr.io/$PROJECT_ID/gc-ingsw3-integrador-backend:latest \
+          --platform "managed" \
+          --quiet
