@@ -5,13 +5,6 @@ const assert = require('assert');
 //const URL = 'http://localhost:3000';
 const URL = 'https://gc-ingsw3-integrador-frontend-g5wdfg2tqq-uc.a.run.app'
 
-
-Scenario('Testing Some Text', async ({ I }) => {
-    I.amOnPage(URL);
-    I.wait(5);
-    I.see('EL AUDIO DE LOS VIERNES!')
-});
-
 Scenario('Testing Upload - Success', async ({ I }) => {
     I.wait(10);
     I.amOnPage(URL);
