@@ -26,7 +26,9 @@ jobs:
       working-directory: ./frontend
 
     - name: Run test
-      run: xvfb-run npx codeceptjs run
+      run: |
+        sleep 30
+        xvfb-run npx codeceptjs run
       working-directory: ./frontend
 
     - name: Results
