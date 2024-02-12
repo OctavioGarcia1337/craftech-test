@@ -5,16 +5,6 @@ const assert = require('assert');
 //const URL = 'http://localhost:3000';
 const URL = 'https://gc-ingsw3-integrador-frontend-g5wdfg2tqq-uc.a.run.app'
 
-
-Scenario('Testing Some Text', ({ I }) => {
-    I.wait(15);
-    I.amOnPage(URL);
-    I.wait(5);
-    I.see('EL AUDIO DE LOS VIERNES!')
-    I.see('Octavio Garcia 2004033 - UCC - Ingeniería en Software III - 2024')
-
-});
-
 Scenario('Testing Upload - Success', async ({ I }) => {
     I.wait(10);
     I.amOnPage(URL);
@@ -45,7 +35,12 @@ Scenario('Testing Upload - Success', async ({ I }) => {
 
 });
 
-
+Scenario('Testing Some Text', ({ I }) => {
+    I.wait(15);
+    I.amOnPage(URL);
+    I.wait(5);
+    I.see('EL AUDIO DE LOS VIERNES!')
+});
 
 Scenario('Testing Upload - Error', async ({ I }) => {
     I.amOnPage(URL);
