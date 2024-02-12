@@ -10,6 +10,13 @@ describe('Backend API Tests', () => {
         assert.equal(response.status, 200);
     });
 
+    it('PING PONG TEST', async () => {
+        const response = await fetch('http://localhost:8080/ping');
+        const data = await response.json();
+
+        assert.equal(response.status, 200);
+    });
+
     it('Testing POST req it should insert a new youtube_id equal to TEST', async () => {
         const audio = {
             youtube_id: 'TEST',
