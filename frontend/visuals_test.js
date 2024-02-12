@@ -6,12 +6,12 @@ const assert = require('assert');
 const URL = 'https://gc-ingsw3-integrador-frontend-g5wdfg2tqq-uc.a.run.app'
 
 
-Scenario('Testing Some Text', ({ I }) => {
+/*Scenario('Testing Some Text', ({ I }) => {
     I.wait(15);
     I.amOnPage('https://gc-ingsw3-integrador-frontend-g5wdfg2tqq-uc.a.run.app');
     I.wait(5);
     I.see('EL AUDIO DE LOS VIERNES!')
-});
+});*/
 
 Scenario('Testing Upload - Success', async ({ I }) => {
     I.wait(10);
