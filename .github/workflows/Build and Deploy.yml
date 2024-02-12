@@ -52,14 +52,14 @@ jobs:
 
       - name: Push the image to the Google Container Registry (GCR)
         run: |-
-          docker push gcr.io/$PROJECT_ID/gc-ingsw3-integrador-frontend:latest
-          docker push gcr.io/$PROJECT_ID/gc-ingsw3-integrador-backend:latest
+          docker push gcr.io/viernes-2004033/gc-ingsw3-integrador-frontend:latest
+          docker push gcr.io/viernes-2004033/gc-ingsw3-integrador-backend:latest
 
       - name: Deploy Frontend
         run: |-
           gcloud run deploy gc-ingsw3-integrador-frontend \
           --region $REGION \
-          --image gcr.io/$PROJECT_ID/gc-ingsw3-integrador-frontend:latest \
+          --image gcr.io/viernes-2004033/gc-ingsw3-integrador-frontend:latest \
           --platform "managed" \
           --quiet
       
@@ -67,6 +67,6 @@ jobs:
         run: |-
           gcloud run deploy gc-ingsw3-integrador-backend \
           --region $REGION \
-          --image gcr.io/$PROJECT_ID/gc-ingsw3-integrador-backend:latest \
+          --image gcr.io/viernes-2004033/gc-ingsw3-integrador-backend:latest \
           --platform "managed" \
           --quiet
