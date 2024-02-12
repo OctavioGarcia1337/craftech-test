@@ -21,8 +21,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        npx playwright install
-        npm install
+        npx playwright install --force
+        npm install --force
       working-directory: ./frontend
 
     - name: Run test

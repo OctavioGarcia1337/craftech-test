@@ -2,8 +2,8 @@ Feature('Prueba')
 
 const assert = require('assert');
 
-const URL = 'http://localhost:3000';
-//const URL = 'https://gc-ingsw3-integrador-frontend-yvui5th4na-uc.a.run.app'
+//const URL = 'http://localhost:3000';
+const URL = 'https://gc-ingsw3-integrador-frontend-g5wdfg2tqq-uc.a.run.app'
 
 
 Scenario('Testing Some Text', ({ I }) => {
@@ -47,7 +47,7 @@ Scenario('Testing Upload - Success', async ({ I }) => {
 
 
 Scenario('Testing Upload - Error', async ({ I }) => {
-    I.amOnPage('https://gc-ingsw3-integrador-frontend-yvui5th4na-uc.a.run.app');
+    I.amOnPage(URL);
     I.click('button.sc-kFCroH');
 
     I.waitForVisible('div.sc-guDLey.dwEfBc', 5);
