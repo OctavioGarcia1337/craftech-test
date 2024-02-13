@@ -7,6 +7,7 @@ const URL = 'https://gc-ingsw3-integrador-frontend-g5wdfg2tqq-uc.a.run.app'
 
 Scenario('Preparar Tests', async ({ I }) => {
     I.wait(10);
+    I.amOnPage(URL);
     I.wait(10);
     const numberOfElements = await I.grabNumberOfVisibleElements('button.sc-kFCroH');
     if (numberOfElements > 0) {
