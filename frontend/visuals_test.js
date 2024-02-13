@@ -2,18 +2,17 @@ Feature('Prueba')
 
 const assert = require('assert');
 
-//const URL = 'http://localhost:3000';
-const URL = 'https://gc-ingsw3-integrador-frontend-g5wdfg2tqq-uc.a.run.app'
+const DOMAIN_URL = 'https://gc-ingsw3-integrador-frontend-g5wdfg2tqq-uc.a.run.app'
 
 Scenario('Preparar Tests', async ({ I }) => {
-    I.amOnPage(URL)
-    I.wait(10)
-    I.pass('Estamos listos para empezar los tests!')
+    I.wait(5)
+    I.amOnPage(DOMAIN_URL);
+    I.wait(5)
 });
 
 
 Scenario('Testing Upload - Error', async ({ I }) => {
-    I.amOnPage(URL);
+    I.amOnPage(DOMAIN_URL);
     I.click('button.sc-kFCroH');
 
     I.waitForVisible('div.sc-guDLey.dwEfBc', 5);
@@ -43,7 +42,7 @@ Scenario('Testing Upload - Error', async ({ I }) => {
 });
 
 Scenario('Testing Upload - Success', async ({ I }) => {
-    I.amOnPage(URL);
+    I.amOnPage(DOMAIN_URL);
     I.click('button.sc-kFCroH');
 
     I.waitForVisible('div.sc-guDLey.dwEfBc', 5);
@@ -72,7 +71,7 @@ Scenario('Testing Upload - Success', async ({ I }) => {
 });
 
 Scenario('Testing Some Text', async ({ I }) => {
-    I.amOnPage(URL);
+    I.amOnPage(DOMAIN_URL);
     I.wait(5);
     I.see('EL AUDIO DE LOS VIERNES!')
 });
