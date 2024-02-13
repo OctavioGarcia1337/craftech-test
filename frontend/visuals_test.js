@@ -7,6 +7,7 @@ const URL = 'https://gc-ingsw3-integrador-frontend-g5wdfg2tqq-uc.a.run.app'
 
 Scenario('Preparar Tests', async ({ I }) => {
     I.wait(10);
+    I.wait(10);
     const numberOfElements = await I.grabNumberOfVisibleElements('button.sc-kFCroH');
     if (numberOfElements > 0) {
         I.click('button.sc-kFCroH');
@@ -39,6 +40,7 @@ Scenario('Testing Upload - Error', async ({ I }) => {
 
     if (colorAntes === 'default' && colorDespues === 'error') {
         console.log('El audio no se añadio de manera exitosa. Lo cual es correcto para la prueba');
+        assert.ok('Test de Error exitoso');
     } else {
         assert.fail(`Ocurrio un error inesperado`);
         //assert.fail(`Ocurrio un error y se pudo añadir el audio. Antes:${colorAntes} ---- Desp:${colorDespues}`);
@@ -68,6 +70,7 @@ Scenario('Testing Upload - Success', async ({ I }) => {
 
     if (colorAntes === 'default' && colorDespues === 'success') {
         console.log('El audio se añadio de manera exitosa. Lo cual es correcto para la prueba');
+        assert.ok('Test de Exito correcto');
     } else {
         assert.fail(`Ocurrio un error inesperado`);
         //assert.fail(`Ocurrio un error añadiendo el audio. Antes:${colorAntes} ---- Desp:${colorDespues}`);
