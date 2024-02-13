@@ -21,7 +21,7 @@ Scenario('Flaky scenario 1', { retries: 2 }, () => {
   assert.equal(tries, 2);
 });
 
-Scenario('Testing Upload - Error', async ({ I }) => {
+Scenario('Testing Upload - Error', {retries: 2}, async ({ I }) => {
     I.amOnPage(DOMAIN_URL);
     I.click('button.sc-kFCroH');
 
@@ -50,7 +50,7 @@ Scenario('Testing Upload - Error', async ({ I }) => {
 
 });
 
-Scenario('Testing Upload - Success', async ({ I }) => {
+Scenario('Testing Upload - Success', {retries: 2}, async ({ I }) => {
     I.amOnPage(DOMAIN_URL);
     I.click('button.sc-kFCroH');
 
@@ -79,7 +79,7 @@ Scenario('Testing Upload - Success', async ({ I }) => {
 
 });
 
-Scenario('Testing Some Text', async ({ I }) => {
+Scenario('Testing Some Text', {retries: 2}, async ({ I }) => {
     I.amOnPage(DOMAIN_URL);
     I.wait(5);
     I.see('EL AUDIO DE LOS VIERNES!')
