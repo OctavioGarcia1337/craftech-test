@@ -6,8 +6,7 @@ const assert = require('assert');
 const URL = 'https://gc-ingsw3-integrador-frontend-g5wdfg2tqq-uc.a.run.app'
 
 Scenario('Preparar Tests', async ({ I }) => {
-    I.amOnPage(URL);
-    I.wait(3);
+    I.wait(10);
     const numberOfElements = await I.grabNumberOfVisibleElements('button.sc-kFCroH');
     if (numberOfElements > 0) {
         I.click('button.sc-kFCroH');
