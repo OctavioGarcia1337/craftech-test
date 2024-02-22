@@ -14,7 +14,7 @@ describe('Backend API Tests', () => {
     it('Testing extractYoutubeId', async () => {
         
         const YoutubeLink = 'https://www.youtube.com/watch?v=XMpYGx8xBl0';
-        const YoutubeID = 'XMpYGx8xBl0';
+        const YoutubeID = 'XMpYGx8xBl0TEST';
         
         
         assert.equal(YoutubeID, extractYoutubeId(YoutubeLink), "El YoutubeID se extrajo con éxito");
