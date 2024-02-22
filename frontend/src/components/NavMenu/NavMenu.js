@@ -64,7 +64,7 @@ const NavMenu = () => {
     <>
       <Container>
         <div></div>
-        <StyledTitle>EL AUDIO DE LOS VIERNES!</StyledTitle>
+        <StyledTitle>EL AUDIO DE LOS JUEVES!</StyledTitle>
         <Button ref={buttonRef} onClick={handleMenuToggle}>
           <Icon />
         </Button>
