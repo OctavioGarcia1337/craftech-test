@@ -20,12 +20,12 @@ const NavMenu = () => {
 
   const handleMenuSubmit = async (event) => {
     event.preventDefault();
-    const youtubeId = extractYoutubeId(youtubeLink);
+    //const youtubeId = extractYoutubeId(youtubeLink);
     try {
       await axios.post( DB_HOST, {
-        youtube_id: youtubeId
+        youtube_id: /*youtubeId*/youtubeLink
       });
-      console.log('Audio añadido correctamente.', youtubeId);
+      console.log('Audio añadido correctamente.', /*youtubeId*/youtubeLink);
       setButtonColor('success');
       setYoutubeLink('');
     } catch (error) {
@@ -37,10 +37,10 @@ const NavMenu = () => {
     }, 2000);
   };
 
-  const extractYoutubeId = (url) => {
+  /*const extractYoutubeId = (url) => {
     const videoIdMatch = url.match(/(?:\/|%3D|v=|vi=)([0-9A-Za-z-_]{11})(?:[^\w-]|$)/);
     return videoIdMatch ? videoIdMatch[1] : null;
-  };
+  };*/
 
   useEffect(() => {
     const handleClickOutside = (event) => {
