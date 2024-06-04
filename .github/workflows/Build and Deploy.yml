@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - id: "auth"
-        uses: "google-github-actions/auth@v0"
+        uses: "google-github-actions/auth@v2"
         with:
           credentials_json: "${{ secrets.GOOGLECLOUD_KEY }}"
 
@@ -38,34 +38,34 @@ jobs:
         run: |-
           docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
           cd backend
-          docker build -t $DOCKERHUB_USERNAME/ingsw3-integrador-backend:latest .
-          docker push $DOCKERHUB_USERNAME/ingsw3-integrador-backend:latest
+          docker build -t $DOCKERHUB_USERNAME/craftech-test-backend:latest .
+          docker push $DOCKERHUB_USERNAME/craftech-test-backend:latest
           cd ../frontend
-          docker build -t $DOCKERHUB_USERNAME/ingsw3-integrador-frontend:latest .
-          docker push $DOCKERHUB_USERNAME/ingsw3-integrador-frontend:latest
+          docker build -t $DOCKERHUB_USERNAME/craftech-test-frontend:latest .
+          docker push $DOCKERHUB_USERNAME/craftech-test-frontend:latest
           cd ../database
           docker build -t $DOCKERHUB_USERNAME/mysql:latest .
           docker push $DOCKERHUB_USERNAME/mysql:latest
 
       - name: Push the image to the Google Container Registry (GCR)
         run: |-
-          docker tag octaviogarcia/ingsw3-integrador-frontend:latest gcr.io/viernes-2004033/gc-ingsw3-integrador-frontend
-          docker tag octaviogarcia/ingsw3-integrador-backend:latest gcr.io/viernes-2004033/gc-ingsw3-integrador-backend
-          docker push gcr.io/viernes-2004033/gc-ingsw3-integrador-frontend:latest
-          docker push gcr.io/viernes-2004033/gc-ingsw3-integrador-backend:latest
+          docker tag octaviogarcia/craftech-test-frontend:latest gcr.io/craftech-test/gc-ct-frontend
+          docker tag octaviogarcia/craftech-test-backend:latest gcr.io/craftech-test/gc-ct-backend
+          docker push gcr.io/craftech-test/gc-ct-frontend:latest
+          docker push gcr.io/craftech-test/gc-ct-backend:latest
 
       - name: Deploy Frontend
         run: |-
-          gcloud run deploy gc-ingsw3-integrador-frontend \
+          gcloud run deploy gc-ct-frontend \
           --region $REGION \
-          --image gcr.io/viernes-2004033/gc-ingsw3-integrador-frontend:latest \
+          --image gcr.io/craftech-test/gc-ct-frontend:latest \
           --platform "managed" \
           --quiet
       
       - name: Deploy Backend
         run: |-
-          gcloud run deploy gc-ingsw3-integrador-backend \
+          gcloud run deploy gc-ct-backend \
           --region $REGION \
-          --image gcr.io/viernes-2004033/gc-ingsw3-integrador-backend:latest \
+          --image gcr.io/craftech-test/gc-ct-backend:latest \
           --platform "managed" \
           --quiet
