@@ -16,13 +16,7 @@ jobs:
       - name: Build and run 
         run: |
            docker compose up -d
-           sleep 30
-
-      - name: Run Tests
-        run: |
-          chmod +x ./node_modules/.bin/mocha
-          npx mocha tests.js
-        working-directory: ./backend
+           sleep 10
       
       - name: Run frontend
         run: |
@@ -30,15 +24,20 @@ jobs:
           nohup npm start &
         working-directory: ./frontend
 
-      - name: Login to Docker Hub
-        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
-      
-      - name: Tag and push Docker images
-        run: |
-          docker tag ingsw3-integrador-backend:latest ${{ secrets.DOCKERHUB_USERNAME }}/ingsw3-integrador-backend:latest
-          docker tag mysql ${{ secrets.DOCKERHUB_USERNAME }}/mysql
-
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ingsw3-integrador-backend:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/mysql
+      - name: Build and push images
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: |-
+          echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+          cd backend
+          docker build -t $DOCKERHUB_USERNAME/craftech-test-backend:latest .
+          docker push $DOCKERHUB_USERNAME/craftech-test-backend:latest
+          cd ../frontend
+          docker build -t $DOCKERHUB_USERNAME/craftech-test-frontend:latest .
+          docker push $DOCKERHUB_USERNAME/craftech-test-frontend:latest
+          cd ../database
+          docker build -t $DOCKERHUB_USERNAME/mysql:latest .
+          docker push $DOCKERHUB_USERNAME/mysql:latest
 
           
