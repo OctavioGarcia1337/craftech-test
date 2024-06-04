@@ -97,8 +97,9 @@ gcloud auth configure-docker
 * Le damos crear y esperamos que nos provea de las URL
 
 En mi caso pueden visitar el servicio funcionando en:
+
 frontend: https://gc-ct-frontend-apoeka5nza-uc.a.run.app
-backend: https://gc-ct-backend-apoeka5nza-uc.a.run.app
+backend: https://gc-ct-backend-apoeka5nza-uc.a.run.app/audio/api/v1/audio
 
 ### Contacto
 Email: octaviogarcia1337@gmail.com
