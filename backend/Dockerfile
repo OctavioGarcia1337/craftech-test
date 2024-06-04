@@ -1,14 +1,24 @@
-FROM node:16
+# Use an official Python runtime as a parent image
+FROM python:3.9
 
-WORKDIR /app
+# Set environment variables
+ENV PYTHONUNBUFFERED 1
 
-COPY package*.json ./
+# Set the working directory in the container
+WORKDIR /code
 
-RUN npm install
+# Install system dependencies
+RUN apt-get update \
+    && apt-get install -y default-libmysqlclient-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY . .
+# Copy the current directory contents into the container at /code
+COPY . /code/
 
-EXPOSE 8080
+# Install Python dependencies
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+RUN pip install mysqlclient
 
-CMD [ "node", "index.js" ]
-#CMD [ "npm", "start" ]
+CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
