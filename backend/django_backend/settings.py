@@ -131,6 +131,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS = True
 
 # # CORS authorizations
+
 # CORS_ALLOWED_ORIGINS = [
 #     "http://localhost:5173",
 #     "http://gc-ct-backend-apoeka5nza-uc.a.run.app",
